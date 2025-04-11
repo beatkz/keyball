@@ -119,6 +119,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+    case SCRL_MO:
+        // Workaround when Auto Mouse Layer is on
+        keyball_set_scroll_mode(record->event.pressed);
+        // process_auto_mouse may use this in future, if changed order of
+        // processes.
+        return true;
+        break;
     default:
         if(record->event.pressed){
             fn_pressed = false;
