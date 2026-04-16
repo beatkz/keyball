@@ -1,8 +1,8 @@
 ln -s $(pwd)/qmk_firmware/keyboards/keyball ../__qmk__/keyboards/keyball
 JOBS=$(($(grep cpu.cores /proc/cpuinfo | sort -u | sed 's/[^0-9]//g') + 1))
 
-#-j にはCPUのスレッド数を指定する。12コア24スレッドのCPUなら -j 24 とする。
-#qmk compile -j 12 -kb keyball/keyball44 -km via
+#-j にはCPUのコア数+1を指定するのが一般的です。これにより、コンパイルが高速化されます。
+#qmk compile -j 7 -kb keyball/keyball44 -km via
 qmk compile -j $JOBS -kb keyball/keyball44 -km via
 qmk compile -j $JOBS -kb keyball/keyball61 -km via
 qmk compile -j $JOBS -kb keyball/keyball44 -km nicola_via
