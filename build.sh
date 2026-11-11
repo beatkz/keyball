@@ -2,7 +2,7 @@ ln -s $(pwd)/qmk_firmware/keyboards/keyball ../__qmk__/keyboards/keyball
 JOBS=$(($(grep cpu.cores /proc/cpuinfo | sort -u | sed 's/[^0-9]//g') + 1))
 
 #-j にはCPUのコア数+1を指定するのが一般的です。これにより、コンパイルが高速化されます。
-#qmk compile -j 7 -kb keyball/keyball44 -km via
+#qmk compile -c -j 7 -kb keyball/keyball44 -km via
 qmk compile -c -j $JOBS -kb keyball/keyball44 -km via
 qmk compile -c -j $JOBS -kb keyball/keyball61 -km via
 qmk compile -c -j $JOBS -kb keyball/keyballplus -km via
